@@ -1,7 +1,9 @@
 #! /bin/bash
 
 git clone --bare https://github.com/ccancinos/.dotfiles.git $HOME/.dotfiles
-alias config='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+function config() {
+  git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME $@
+}
 
 config checkout
 if [ $? = 0 ]; then
